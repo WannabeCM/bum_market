@@ -1,31 +1,6 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* header */
-#header {
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid gray;
-}
-#header-area {
-  width: 1024px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-#header-area > img {
-  width: 128px;
-}
-
 /* main */
 #main {
-  height: 100%;
+  height: 100vh;
   width: 1024px;
   margin: 0 auto;
 }
@@ -92,8 +67,7 @@ body {
   width: 24px;
 }
 
-/* footer */
-#footer {
-  height: 200px;
-  background-color: #ddd;
+.product-link {
+  color: inherit;
+  text-decoration: none;
 }

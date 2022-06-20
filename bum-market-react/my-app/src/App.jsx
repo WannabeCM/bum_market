@@ -8,15 +8,24 @@ function App() {
   return (
     <>
       <nav>
-        <Link to={"/"}>MainPage</Link>
+        <header id="header">
+          <div id="header-area">
+            <Link to={"/"}>
+              <img src="/images/icons/logo.png" alt="" />
+            </Link>
+          </div>
+        </header>
         <Link to={"/product"}>Product</Link>
         <Link to={"/upload"}>Upload</Link>
       </nav>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/products/:id" element={<ProductPage />} />
-        <Route path="/upload" element={<UploadPage />} />
-      </Routes>
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="/upload" element={<UploadPage />} />
+        </Routes>
+      </main>
+      <footer id="footer"></footer>
     </>
   );
 }
