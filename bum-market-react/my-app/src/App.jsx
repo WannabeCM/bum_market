@@ -3,6 +3,8 @@ import MainPage from "./main";
 import { Routes, Route, Link } from "react-router-dom";
 import UploadPage from "./upload";
 import ProductPage from "./product/index.jsx";
+import { Button } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 
 function App() {
   return (
@@ -13,6 +15,15 @@ function App() {
             <Link to={"/"}>
               <img src="/images/icons/logo.png" alt="" />
             </Link>
+            <Button
+              size="large"
+              onClick={() => {
+                alert("업로드가 되었습니다");
+              }}
+              icon={<DownloadOutlined />}
+            >
+              상품 업로드
+            </Button>
           </div>
         </header>
         <Link to={"/product"}>Product</Link>
