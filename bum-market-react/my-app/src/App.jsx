@@ -1,12 +1,13 @@
 import "./App.css";
 import MainPage from "./main";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import UploadPage from "./upload";
 import ProductPage from "./product/index.jsx";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 
 function App() {
+  const navigate = useNavigate();
   return (
     <>
       <nav>
@@ -18,7 +19,7 @@ function App() {
             <Button
               size="large"
               onClick={() => {
-                alert("업로드가 되었습니다");
+                navigate("/upload");
               }}
               icon={<DownloadOutlined />}
             >
@@ -26,8 +27,8 @@ function App() {
             </Button>
           </div>
         </header>
-        <Link to={"/product"}>Product</Link>
-        <Link to={"/upload"}>Upload</Link>
+        {/* <Link to={"/product"}>Product</Link> */}
+        {/* <Link to={"/upload"}>Upload</Link> */}
       </nav>
       <main id="main">
         <Routes>
