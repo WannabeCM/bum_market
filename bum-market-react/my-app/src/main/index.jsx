@@ -11,9 +11,7 @@ function MainPage() {
   // console.log(setProducts);
   useEffect(function () {
     axios
-      .get(
-        "https://bef77cc5-9ada-4bed-a622-00909f2581e0.mock.pstmn.io/products"
-      )
+      .get("http://localhost:8080/products")
       .then((result) => {
         // console.log("실행 결과: ", result);
         const products = result.data.products;
