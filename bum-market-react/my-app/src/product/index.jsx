@@ -8,11 +8,9 @@ function ProductPage() {
   const [product, setProduct] = useState(null);
   useEffect(function () {
     axios
-      .get(
-        `https://bef77cc5-9ada-4bed-a622-00909f2581e0.mock.pstmn.io/products/${id}`
-      )
+      .get(`http://localhost:8080/products/${id}`)
       .then(function (result) {
-        setProduct(result.data);
+        setProduct(result.data.product);
         console.log(result);
       })
       .catch(function (error) {
@@ -28,7 +26,7 @@ function ProductPage() {
   return (
     <div>
       <div id="image-box">
-        <img src={"/" + product.imageUrl} alt="" />
+        <img src={`/${product.imageUrl}`} alt="" />
       </div>
       <div id="profile-box">
         <img src="/images/icons/avatar.png" alt="" />
@@ -37,7 +35,7 @@ function ProductPage() {
       <div id="contents-box">
         <div id="name">{product.name}</div>
         <div id="price">{product.price}원</div>
-        <div id="createdAt">2022년 6월 20일</div>
+        <div id="createdAt">{product.createdAt}</div>
         <div id="desc">{product.description}</div>
       </div>
     </div>

@@ -1,9 +1,13 @@
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { useState, useEffect } from "react";
 import "./CSS/index.css";
 import "./CSS/reset.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 function MainPage() {
   const [products, setProducts] = useState([]);
@@ -40,13 +44,18 @@ function MainPage() {
                 <div className="product-contents">
                   <span className="product-name">{products.name}</span>
                   <span className="product-price">{products.price}원</span>
-                  <div className="product-seller">
-                    <img
-                      className="product-avatar"
-                      src="images/icons/avatar.png"
-                      alt=""
-                    />
-                    <span>{products.seller}</span>
+                  <div className="product-footer">
+                    <div className="product-seller">
+                      <img
+                        className="product-avatar"
+                        src="images/icons/avatar.png"
+                        alt=""
+                      />
+                      <span>{products.seller}</span>
+                    </div>
+                    <span className="product-date">
+                      {dayjs(products.createdAt).fromNow()}
+                    </span>
                   </div>
                 </div>
               </Link>
