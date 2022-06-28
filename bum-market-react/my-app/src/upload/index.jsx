@@ -2,22 +2,11 @@ import "./index.css";
 import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
 import { useState } from "react";
 import { API_URL } from "../config/contants";
-import axios from "axios";
 
 function UploadPage() {
   const [imageUrl, setImageUrl] = useState(null);
   const onSubmit = (values) => {
-    axios
-      .post(`${API_URL}/products`, {
-        name: values.name,
-        description: values.description,
-        seller: values.seller,
-        price: parseInt(values.price),
-        imageUrl: imageUrl,
-      })
-      .then((result) => {
-        console.log(result);
-      });
+    console.log(values);
   };
 
   const onChangeImage = (info) => {
