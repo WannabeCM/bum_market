@@ -1,11 +1,23 @@
 import "./index.css";
 import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
 import { useState } from "react";
+import { API_URL } from "../config/contants";
+import axios from "axios";
 
 function UploadPage() {
   const [imageUrl, setImageUrl] = useState(null);
   const onSubmit = (values) => {
-    console.log(values);
+    axios
+      .post(`${API_URL}/products`, {
+        name: values.name,
+        description: values.description,
+        seller: values.seller,
+        price: parseInt(values.price),
+        imageUrl: imageUrl,
+      })
+      .then((result) => {
+        console.log(result);
+      });
   };
 
   const onChangeImage = (info) => {
@@ -15,6 +27,7 @@ function UploadPage() {
     if (info.file.status === "done") {
       const response = info.file.response;
       const imageUrl = response.imageUrl;
+      setImageUrl(imageUrl);
     }
   };
   return (
@@ -26,15 +39,19 @@ function UploadPage() {
         >
           <Upload
             name="image"
-            action="http://localhost:8080/image"
+            action={`${API_URL}/image`}
             listType="picture"
             showUploadList={false}
-            onChange={function () {}}
+            onChange={onChangeImage}
           >
-            <div id="upload-img-placeholder">
-              <img src="/images/icons/camera.png" alt="" />
-              <span>이미지를 업로드해주세요.</span>
-            </div>
+            {imageUrl ? (
+              <img id="upload-img" src={`${API_URL}/${imageUrl}`} alt="" />
+            ) : (
+              <div id="upload-img-placeholder">
+                <img src="/images/icons/camera.png" alt="" />
+                <span>이미지를 업로드해주세요.</span>
+              </div>
+            )}
           </Upload>
         </Form.Item>
         <Divider />
