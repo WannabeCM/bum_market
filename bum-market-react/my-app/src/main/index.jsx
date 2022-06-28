@@ -6,6 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { API_URL } from "../config/contants";
 
 dayjs.extend(relativeTime);
 
@@ -15,7 +16,7 @@ function MainPage() {
   // console.log(setProducts);
   useEffect(function () {
     axios
-      .get("http://localhost:8080/products")
+      .get(`${API_URL}/products`)
       .then((result) => {
         // console.log("실행 결과: ", result);
         const products = result.data.products;
